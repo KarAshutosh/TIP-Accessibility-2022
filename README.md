@@ -2,5 +2,5 @@
 
 Dependencies
 ```
-pip install speechrecognition pyaudio pyttsx3
+pip install speechrecognition pyttsx3
 ```
