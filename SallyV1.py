@@ -59,7 +59,10 @@ def run_sally():
         print(event)
             
         if 'list' and 'experiments' in event:
-            talk('The experiments are still under development')        
+            talk('The experiments are still under development') 
+        
+        else
+            talk('Unknown Command')
         
     elif 'who' and 'are' and 'you' in command:
         talk('I am Omega. I am developed by T I P accessible labs of bits Goa')
