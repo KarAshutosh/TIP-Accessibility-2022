@@ -14,19 +14,19 @@ def talk(text):
 
 
 def take_command():
+    
     try:
         with sr.Microphone() as source:
             print('listening...')
             voice = listener.listen(source)
             command = listener.recognize_google(voice)
             command = command.lower()
-            if 'sally' in command:
-                command = command.replace('sally', '')
-                print(command)
+#             if 'sally' in command:
+#                 command = command.replace('sally', 'sally')
+#                 print(command)
     except:
         pass
     return command
-
 
 def run_sally():
     command = take_command()
@@ -37,7 +37,6 @@ def run_sally():
         talk('Hello')
     else:
         talk('Please say the command again.')
-
 
 while True:
     run_sally()
