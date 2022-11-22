@@ -61,7 +61,7 @@ def run_sally():
         if 'list' and 'experiments' in event:
             talk('The experiments are still under development') 
         
-        else
+        else:
             talk('Unknown Command')
         
     elif 'who' and 'are' and 'you' in command:
