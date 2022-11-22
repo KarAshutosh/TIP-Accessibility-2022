@@ -33,10 +33,14 @@ def run_sally():
 
     print(command)
 
-    if 'sally' in command:
-        talk('Hello')
+    if 'omega' in command:
+        talk('Hello, please give me a command')
+        
+    elif 'who' and 'are' and 'you' in command:
+        talk('I am Omega')
+        
     else:
-        talk('Please say the command again.')
+        talk('Please say something')
 
 while True:
     run_sally()
