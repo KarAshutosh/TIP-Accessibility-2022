@@ -9,7 +9,7 @@ void setup() {
 // the loop function runs over and over again forever
 void loop() {
   digitalWrite(RELAY_PIN, HIGH); // open valve 5 seconds
-  delay(5000);
+  delay(2000);
   digitalWrite(RELAY_PIN, LOW);  // close valve 5 seconds
-  delay(5000);
+  delay(2000);
 }
