@@ -1,6 +1,6 @@
 # TIP-Accessibility-2022
 
-(Ashutosh Only) Go to folder "Github Upload" not "TIP-Accessibility-2022"
+(Ashutosh Only) Go to folder "TIP-Accessibility-2022" not "Github Upload" 
 
 >## Clone Repo
 >```
