@@ -2,5 +2,5 @@
 
 Dependencies
 ```
-pip install speechrecognition pyttsx3
+pip install speechrecognition pyttsx3 pyserial
 ```
