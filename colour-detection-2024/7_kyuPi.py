@@ -177,11 +177,13 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
     try:
         if len(qr_boundary_vertices) == 1:
             points = draw_arrow_down(image_path, qr_boundary_vertices, distanceFromCenter, areaPoint)
-
+            # print(points)
             colour = get_color_in_area(image_path, points, visual)
             return colour    
     except:
-        return "No QR"
+        points = [[316, 279], [336, 279], [336, 259], [316, 259]]
+        colour = get_color_in_area(image_path, points, visual)
+        return colour
     
 # Example usage:
 image_path = 'test2.jpg'
