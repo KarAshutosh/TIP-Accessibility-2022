@@ -95,10 +95,11 @@ def get_color_in_area(image_path, points, visual):
 
     # Define color ranges
     color_ranges = {
-        'red': [(0, 100, 100), (10, 255, 255)],
-        'green': [(50, 100, 100), (70, 255, 255)],
-        'blue': [(110, 100, 100), (130, 255, 255)],
-        'litmusBlue': [(95, 135, 100), (179, 255, 255)]
+        # 'red': [(0, 100, 100), (10, 255, 255)],
+        # 'green': [(50, 100, 100), (70, 255, 255)],
+        # 'blue': [(110, 100, 100), (130, 255, 255)],
+        'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
+        'litmus-Red': [(0, 44, 168), (3, 255, 190)]
 
         # Add more color ranges as needed
     }
@@ -184,7 +185,7 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
         points = [[316, 279], [336, 279], [336, 259], [316, 259]]
         colour = get_color_in_area(image_path, points, visual)
         return colour
-    
+
 # Example usage:
 image_path = 'test2.jpg'
 sysOS = "Windows"
@@ -197,4 +198,3 @@ for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
     print(colour)
     # time.sleep(1)
-
