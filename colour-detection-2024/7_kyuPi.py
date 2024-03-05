@@ -98,6 +98,7 @@ def get_color_in_area(image_path, points, visual):
         'red': [(0, 100, 100), (10, 255, 255)],
         'green': [(50, 100, 100), (70, 255, 255)],
         'blue': [(110, 100, 100), (130, 255, 255)],
+        'pink' : [(111,11,189),(179,255,255)],
         'litmusBlue': [(95, 135, 100), (179, 255, 255)]
 
         # Add more color ranges as needed
@@ -177,7 +178,7 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
     try:
         if len(qr_boundary_vertices) == 1:
             points = draw_arrow_down(image_path, qr_boundary_vertices, distanceFromCenter, areaPoint)
-            # print(points)
+            print(points)
             colour = get_color_in_area(image_path, points, visual)
             return colour    
     except:
@@ -189,7 +190,7 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
 image_path = 'test2.jpg'
 sysOS = "Windows"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
-areaPoint = 10 
+areaPoint = 10
 visual = True
 duration = 10 
 
