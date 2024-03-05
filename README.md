@@ -11,3 +11,8 @@
 >git commit -m "New commit"
 >git push origin main
 >```
+
+>## Pull request
+>```
+>git pull origin main
+>```
