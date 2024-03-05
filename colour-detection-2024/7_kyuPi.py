@@ -4,6 +4,8 @@ import qrcode
 import numpy as np
 import time
 
+# sudo apt-get install imagemagick
+
 def detect_and_draw_qr_boundary(image_path):
     # Load the image containing the QR code
     image = cv2.imread(image_path)
@@ -99,7 +101,7 @@ def get_color_in_area(image_path, points, visual):
         # 'green': [(50, 100, 100), (70, 255, 255)],
         # 'blue': [(110, 100, 100), (130, 255, 255)],
         'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
-        'litmus-Red': [(0, 44, 168), (3, 255, 190)]
+        'litmus-Red': [(25, 80, 80), (85, 120, 120)]
 
         # Add more color ranges as needed
     }
@@ -118,6 +120,8 @@ def get_color_in_area(image_path, points, visual):
 
         # Create mask for the color range
         color_mask = cv2.inRange(masked_image, lower_color, upper_color)
+        
+        # print(str(lower_color) + " and " + str(upper_color))
 
         # Count non-zero pixels
         if cv2.countNonZero(color_mask) > 0:
@@ -152,6 +156,8 @@ def takeImage(sysOS):
                 # Capture frame-by-frame
                 ret, frame = cap.read()
 
+                frame = cv2.resize(frame, (640, 480))
+
                 # Display the captured frame
                 cv2.imshow('Webcam', frame)
 
@@ -167,6 +173,7 @@ def takeImage(sysOS):
             cv2.destroyAllWindows()
     elif sysOS == "RasPi":
         os.system("libcamera-still -t 1 -o test2.jpg --vflip --hflip")
+        os.system("convert test2.jpg -resize 640x480! test2.jpg")
 # ====================================================================
 
 def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
