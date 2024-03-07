@@ -172,7 +172,7 @@ def takeImage(sysOS):
             cap.release()
             cv2.destroyAllWindows()
     elif sysOS == "RasPi":
-        os.system("rpicamera-still -t 1 -o test2.jpg --vflip --hflip")
+        os.system("rpicam-still -t 1 -o test2.jpg --vflip --hflip")
         os.system("convert test2.jpg -resize 640x480! test2.jpg")
 # ====================================================================
 
