@@ -3,8 +3,7 @@ import cv2
 import qrcode
 import numpy as np
 import time
-
-# sudo apt-get install imagemagick
+import json # for exporting as JSON
 
 def detect_and_draw_qr_boundary(image_path):
     # Load the image containing the QR code
@@ -97,13 +96,10 @@ def get_color_in_area(image_path, points, visual):
 
     # Define color ranges
     color_ranges = {
-
-        # 'red': [(0, 100, 100), (10, 255, 255)],
-        # 'green': [(50, 100, 100), (70, 255, 255)],
-        # 'blue': [(110, 100, 100), (130, 255, 255)],
-        # 'pink' : [(111,11,189),(179,255,255)],
-        'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
-        'litmus-Red': [(25, 80, 80), (85, 120, 120)]
+        'red': [(0, 100, 100), (10, 255, 255)],
+        'green': [(50, 100, 100), (70, 255, 255)],
+        'blue': [(110, 100, 100), (130, 255, 255)],
+        'litmusBlue': [(95, 135, 100), (179, 255, 255)]
 
         # Add more color ranges as needed
     }
@@ -122,12 +118,16 @@ def get_color_in_area(image_path, points, visual):
 
         # Create mask for the color range
         color_mask = cv2.inRange(masked_image, lower_color, upper_color)
-        
-        # print(str(lower_color) + " and " + str(upper_color))
 
         # Count non-zero pixels
         if cv2.countNonZero(color_mask) > 0:
             detected_colors.append(color_name)
+        # Make JSON file
+        Color_JSON= {}
+        Color_JSON.update({'HSV values final': detected_colors })
+        print(Color_JSON)
+        with open('Colors.json','w') as file: # outputs a json file in same dir as program 
+            json.dump(Color_JSON,file)
 
     if visual == True:
         detection_points = np.array(points, np.int32)
@@ -140,7 +140,6 @@ def get_color_in_area(image_path, points, visual):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-    print(detected_colors) 
     return detected_colors
 
 
@@ -159,8 +158,6 @@ def takeImage(sysOS):
                 # Capture frame-by-frame
                 ret, frame = cap.read()
 
-                frame = cv2.resize(frame, (640, 480))
-
                 # Display the captured frame
                 cv2.imshow('Webcam', frame)
 
@@ -175,8 +172,7 @@ def takeImage(sysOS):
             cap.release()
             cv2.destroyAllWindows()
     elif sysOS == "RasPi":
-        os.system("rpicam-still -t 1 -o test2.jpg --vflip --hflip")
-        os.system("convert test2.jpg -resize 640x480! test2.jpg")
+        os.system("libcamera-still -t 1 -o test2.jpg --vflip --hflip")
 # ====================================================================
 
 def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
@@ -188,19 +184,19 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
     try:
         if len(qr_boundary_vertices) == 1:
             points = draw_arrow_down(image_path, qr_boundary_vertices, distanceFromCenter, areaPoint)
-            print(points)
+            # print(points)
             colour = get_color_in_area(image_path, points, visual)
             return colour    
     except:
         points = [[316, 279], [336, 279], [336, 259], [316, 259]]
         colour = get_color_in_area(image_path, points, visual)
         return colour
-
+    
 # Example usage:
 image_path = 'test2.jpg'
-sysOS = "RasPi"
+sysOS = "Windows"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
-areaPoint = 10
+areaPoint = 10 
 visual = True
 duration = 10 
 
@@ -208,3 +204,9 @@ for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
     print(colour)
     # time.sleep(1)
+    Color_JSON= {}
+    Color_JSON.update({'HSV values final': })
+    print(Color_JSON)
+    with open('Colors.json','w') as file: # outputs a json file in same dir as program 
+        json.dump(Color_JSON,file)
+
