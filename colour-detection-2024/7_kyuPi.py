@@ -172,7 +172,7 @@ def takeImage(sysOS):
             cap.release()
             cv2.destroyAllWindows()
     elif sysOS == "RasPi":
-        os.system("libcamera-still -t 1 -o test2.jpg --vflip --hflip")
+        os.system("rpicamera-still -t 1 -o test2.jpg --vflip --hflip")
         os.system("convert test2.jpg -resize 640x480! test2.jpg")
 # ====================================================================
 
@@ -195,7 +195,7 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
 
 # Example usage:
 image_path = 'test2.jpg'
-sysOS = "Windows"
+sysOS = "RasPi"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
 areaPoint = 10 
 visual = True
