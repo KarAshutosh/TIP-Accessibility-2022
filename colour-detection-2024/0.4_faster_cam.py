@@ -1,14 +1,26 @@
-# pip install picamera
-# import picamera
+import subprocess
+import os
 
-# # Create a Picamera instance
-# with picamera.PiCamera() as camera:
-#     # Adjust camera settings if needed
-#     camera.vflip = True  # Vertical flip
-#     camera.hflip = True  # Horizontal flip
-    
-#     # Capture an image quickly (with minimal delay)
-#     camera.capture('test2.jpg')
+# Define the command
+command = [
+    "rpicam-still",
+    "--timeout", "10800",
+    "--width", "640",
+    "--height", "480",
+    "--output", "test2.jpg",
+    "--timelapse", "1000",
+    "--vflip",
+    "--hflip"
+]
 
+# Redirect output to /dev/null to hide display
+with open(os.devnull, 'w') as null_file:
+    # Run the command, hiding the output
+    process = subprocess.Popen(command, stdout=null_file, stderr=null_file)
 
-# sudo apt install --reinstall libraspberrypi0 libraspberrypi-dev libraspberrypi-doc libraspberrypi-bin
+# Wait for the process to finish (this will run indefinitely until manually terminated)
+try:
+    process.wait()
+except KeyboardInterrupt:
+    # Terminate the process if Ctrl+C is pressed
+    process.terminate()
