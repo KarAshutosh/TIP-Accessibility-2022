@@ -9,12 +9,11 @@ def rpiPhoto():
     # Define the command
     command = [
         "rpicam",
-        "--timeout", "0",
-        "--width", "1920",
-        "--height", "1080",
-        "--rotation", "0",
-        "--output", "/path/to/save/image_%04d.jpg",
-        "--timelapse", "5000",
+        "--timeout", "10800",
+        "--width", "640",
+        "--height", "480",
+        "--output", "test2.jpg",
+        "--timelapse", "1000",
         "--vflip",
         "--hflip"
     ]
@@ -200,9 +199,10 @@ def takeImage(sysOS):
             cap.release()
             cv2.destroyAllWindows()
     elif sysOS == "RasPi":
-        os.system("rpicam-still -t 1 -o test2.jpg --vflip --hflip")
-        # rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip
-        os.system("convert test2.jpg -resize 640x480! test2.jpg")
+        rpiPhoto()
+        # os.system("rpicam-still -t 1 -o test2.jpg --vflip --hflip")
+        # # rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip
+        # os.system("convert test2.jpg -resize 640x480! test2.jpg")
 # ====================================================================
 
 def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
