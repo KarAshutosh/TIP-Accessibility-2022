@@ -5,10 +5,12 @@ import numpy as np
 import time
 import subprocess
 
+# # rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip
+
 def rpiPhoto():
     # Define the command
     command = [
-        "rpicam",
+        "rpicam-still",
         "--timeout", "10800",
         "--width", "640",
         "--height", "480",
