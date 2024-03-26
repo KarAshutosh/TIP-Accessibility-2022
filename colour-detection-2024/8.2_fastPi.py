@@ -182,7 +182,7 @@ def takeImage(sysOS):
         # os.system("convert test2.jpg -resize 640x480! test2.jpg")
 # ====================================================================
 
-def capture_images():
+def capture_images_win():
     # Open the webcam
     cap = cv2.VideoCapture(0)
 
@@ -228,8 +228,8 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
         colour = get_color_in_area(image_path, points, visual)
         return colour
 
-
-
+def capture_images_pi():
+    os.system("rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip")
 
 # Example usage:
 image_path = 'test2.jpg'
@@ -240,8 +240,10 @@ visual = True
 duration = 10
 
 if __name__ == "__main__":
-    threading.Thread(target=capture_images).start()
-
+    if sysOS == "Windows":
+        threading.Thread(target=capture_images_win).start()
+    elif sysOS == "RasPi":
+        threading.Thread(target=capture_images_pi).start()
 
 for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
