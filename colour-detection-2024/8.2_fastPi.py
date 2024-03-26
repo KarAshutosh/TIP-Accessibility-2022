@@ -189,30 +189,27 @@ def capture_images_win():
     # Check if the webcam is opened successfully
     if not cap.isOpened():
         print("Error: Could not access the webcam.")
-    else:
-        end_time = time.time() + 10  # Capture images for 10 seconds
-        while time.time() < end_time:
-            # Capture frame-by-frame
-            ret, frame = cap.read()
+        return
+    
+    end_time = time.time() + 10  # Capture images for 10 seconds
+    while time.time() < end_time:
+        # Capture frame-by-frame
+        ret, frame = cap.read()
 
-            frame = cv2.resize(frame, (640, 480))
+        frame = cv2.resize(frame, (640, 480))
 
-            # Save the image
-            # cv2.imwrite(f'image_{int(time.time())}.jpg', frame)
-            # print(f'Image saved as image_{int(time.time())}.jpg')
+        # Save the image
+        cv2.imwrite('test2.jpg', frame)
+        print('Image saved as test2.jpg')
 
-            cv2.imwrite(f'test2.jpg', frame)
-            print(f'Image saved as test2.jpg')
+        # Sleep for 500 milliseconds
+        time.sleep(0.5)
 
-            # Sleep for 500 milliseconds
-            time.sleep(0.5)
-
-        # Release the webcam and close all OpenCV windows
-        cap.release()
-        cv2.destroyAllWindows()
+    # Release the webcam
+    cap.release()
 
 def capture_images_pi():
-    os.system("rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip")
+    os.system("rpicam-still --timeout 10000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip")
     print('Image saved as test2.jpg')
 
 def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
@@ -232,9 +229,6 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
         colour = get_color_in_area(image_path, points, visual)
         return colour
 
-def capture_images_pi():
-    os.system("rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip")
-
 # Example usage:
 image_path = 'test2.jpg'
 sysOS = "Windows"
@@ -245,7 +239,9 @@ duration = 10
 
 if __name__ == "__main__":
     if sysOS == "Windows":
-        threading.Thread(target=capture_images_win).start()
+        capture_thread = threading.Thread(target=capture_images_win)
+        capture_thread.start()
+
     elif sysOS == "RasPi":
         threading.Thread(target=capture_images_pi).start()
 
