@@ -209,7 +209,7 @@ def capture_images_win():
     cap.release()
 
 def capture_images_pi():
-    os.system("rpicam-still --timeout 10000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip")
+    os.system("rpicam-still --timeout 60000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip")
     print('Image saved as test2.jpg')
 
 def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
@@ -237,7 +237,7 @@ areaPoint = 10
 visual = True
 duration = 10
 
-def simplified2(duration, image_path, distanceFromCenter, areaPoint, visual, sysOS):
+def simplified2():
     # Example usage:
     image_path = 'test2.jpg'
     sysOS = "RasPi"

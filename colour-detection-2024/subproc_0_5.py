@@ -1,34 +1,26 @@
-import cv2
+import subprocess
 import threading
-import time
 
-def capture_images():
-    # Open the webcam
-    cap = cv2.VideoCapture(0)
+def count_to_1000():
+    for i in range(1, 1001):
+        print(i)
 
-    # Check if the webcam is opened successfully
-    if not cap.isOpened():
-        print("Error: Could not access the webcam.")
-        return
-    
-    end_time = time.time() + 10  # Capture images for 10 seconds
-    while time.time() < end_time:
-        # Capture frame-by-frame
-        ret, frame = cap.read()
+def sayA():
+    print("a")
 
-        frame = cv2.resize(frame, (640, 480))
-
-        # Save the image
-        cv2.imwrite('test2.jpg', frame)
-        print('Image saved as test2.jpg')
-
-        # Sleep for 500 milliseconds
-        time.sleep(0.5)
-
-    # Release the webcam
-    cap.release()
+def sayB():
+    print("b")
 
 if __name__ == "__main__":
-    # Create and start the thread for capturing images
-    capture_thread = threading.Thread(target=capture_images)
-    capture_thread.start()
+    # Define threads for sayA, count_to_1000, and sayB
+    thread_a = threading.Thread(target=sayA)
+    thread_count = threading.Thread(target=count_to_1000)
+    thread_b = threading.Thread(target=sayB)
+    
+    # Start the threads
+    thread_a.start()
+    thread_count.start()
+    thread_b.start()
+    
+    # Wait for count_to_1000 to finish before proceeding
+    thread_count.join()
