@@ -237,15 +237,22 @@ areaPoint = 10
 visual = True
 duration = 10
 
+def simplified2(duration, image_path, distanceFromCenter, areaPoint, visual, sysOS):
+    for i in range(duration):
+        colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
+        print(colour)
+        # time.sleep(1)
+
 if __name__ == "__main__":
     if sysOS == "Windows":
         capture_thread = threading.Thread(target=capture_images_win)
+        simplified2_thread = threading.Thread(target=simplified2)
         capture_thread.start()
+        simplified2_thread.start()
 
     elif sysOS == "RasPi":
-        threading.Thread(target=capture_images_pi).start()
+        simplified2_thread = threading.Thread(target=simplified2)
+        capture_thread = threading.Thread(target=capture_images_pi)
+        capture_thread.start()
+        simplified2_thread.start()
 
-for i in range(duration):
-    colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
-    print(colour)
-    # time.sleep(1)
