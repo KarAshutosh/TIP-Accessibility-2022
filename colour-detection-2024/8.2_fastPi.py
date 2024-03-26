@@ -231,13 +231,20 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
 
 # Example usage:
 image_path = 'test2.jpg'
-sysOS = "Windows"
+sysOS = "RasPi"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
 areaPoint = 10
 visual = True
 duration = 10
 
 def simplified2(duration, image_path, distanceFromCenter, areaPoint, visual, sysOS):
+    # Example usage:
+    image_path = 'test2.jpg'
+    sysOS = "RasPi"
+    distanceFromCenter = 1.2 # 1.2x QR code width from center
+    areaPoint = 10
+    visual = True
+    duration = 10
     for i in range(duration):
         colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
         print(colour)
