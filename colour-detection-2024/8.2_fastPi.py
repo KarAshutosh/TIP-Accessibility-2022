@@ -229,13 +229,31 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
         colour = get_color_in_area(image_path, points, visual)
         return colour
 
+# def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
+#     for _ in range(20):
+#         # takeImage(sysOS)
+
+#         qr_image_with_boundary, qr_boundary_vertices = detect_and_draw_qr_boundary(image_path)
+
+#         try:
+#             if len(qr_boundary_vertices) == 1:
+#                 points = draw_arrow_down(image_path, qr_boundary_vertices, distanceFromCenter, areaPoint)
+#                 print(points)
+#                 colour = get_color_in_area(image_path, points, visual)
+#                 return colour    
+#         except:
+#             points = [[316, 279], [336, 279], [336, 259], [316, 259]]
+#             colour = get_color_in_area(image_path, points, visual)
+#             return colour
+        
+#         time.sleep(1)  # Wait for 1 second before the next iteration
 # Example usage:
 image_path = 'test2.jpg'
 sysOS = "RasPi"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
 areaPoint = 10
-visual = True
-duration = 10
+visual = False
+duration = 15
 
 def simplified2():
     # Example usage:
@@ -243,12 +261,12 @@ def simplified2():
     sysOS = "RasPi"
     distanceFromCenter = 1.2 # 1.2x QR code width from center
     areaPoint = 10
-    visual = True
-    duration = 10
+    visual = False
+    duration = 15
     for i in range(duration):
         colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
         print(colour)
-        # time.sleep(1)
+        time.sleep(1)
 
 if __name__ == "__main__":
     if sysOS == "Windows":
