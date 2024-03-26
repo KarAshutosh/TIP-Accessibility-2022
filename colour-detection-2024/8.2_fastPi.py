@@ -211,6 +211,10 @@ def capture_images_win():
         cap.release()
         cv2.destroyAllWindows()
 
+def capture_images_pi():
+    os.system("rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip")
+    print('Image saved as test2.jpg')
+
 def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
     
     # takeImage(sysOS)
