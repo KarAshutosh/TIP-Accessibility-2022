@@ -13,7 +13,8 @@ def detect_colors(image_path):
     color_ranges = {
         'red': [(0, 100, 100), (10, 255, 255)],
         'green': [(50, 100, 100), (70, 255, 255)],
-        'blue': [(110, 100, 100), (130, 255, 255)]
+        'blue': [(110, 100, 100), (130, 255, 255)],
+        'litmusBlue': [(95, 135, 100), (179, 255, 255)]
         # Add more color ranges as needed
     }
 
@@ -35,33 +36,33 @@ def detect_colors(image_path):
 
 
 # ====================================================================
-# # Open the webcam
-# cap = cv2.VideoCapture(0)
+# Open the webcam
+cap = cv2.VideoCapture(0)
 
-# # Check if the webcam is opened successfully
-# if not cap.isOpened():
-#     print("Error: Could not access the webcam.")
-# else:
-#     while True:
-#         # Capture frame-by-frame
-#         ret, frame = cap.read()
+# Check if the webcam is opened successfully
+if not cap.isOpened():
+    print("Error: Could not access the webcam.")
+else:
+    while True:
+        # Capture frame-by-frame
+        ret, frame = cap.read()
 
-#         # Display the captured frame
-#         cv2.imshow('Webcam', frame)
+        # Display the captured frame
+        cv2.imshow('Webcam', frame)
 
-#         # Break the loop when 'q' is pressed
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
-#             # Save the image
-#             cv2.imwrite('test2.jpg', frame)
-#             print('Image saved as test2.jpg')
-#             break
+        # Break the loop when 'q' is pressed
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            # Save the image
+            cv2.imwrite('test2.jpg', frame)
+            print('Image saved as test2.jpg')
+            break
 
-#     # Release the webcam and close all OpenCV windows
-#     cap.release()
-#     cv2.destroyAllWindows()
+    # Release the webcam and close all OpenCV windows
+    cap.release()
+    cv2.destroyAllWindows()
 # ====================================================================
 
-os.system("libcamera-still -o test2.jpg --vflip --hflip")
+# os.system("libcamera-still -o test2.jpg --vflip --hflip")
 path = r'./test2.jpg'
 
 detected_colors = detect_colors(path)
