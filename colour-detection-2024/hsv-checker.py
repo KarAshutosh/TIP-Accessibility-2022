@@ -34,7 +34,7 @@ def get_average_hsv_values():
 
         cv2.imshow('10x10 Pixel Box', box)
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(1) == ord('q'):
             break
 
     cap.release()
