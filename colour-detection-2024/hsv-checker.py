@@ -1,9 +1,9 @@
 import cv2
 import numpy as np
-from picamera2 import Picamera2
+from picamera import Picamera
 # Function to get average HSV values from a 10x10 pixel box in the center of the screen
 def get_average_hsv_values():
-    cap = picam2.capture_array()  # Open the default camera (0)
+    cap = picam.capture_array()  # Open the default camera (0)
 
     while True:
         ret, frame = cap.read()  # Read a frame from the camera
