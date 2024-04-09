@@ -120,6 +120,7 @@ def get_color_in_area(image_path, points, visual):
 
     # Convert BGR image to HSV
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    print(hsv)
 
     # Define color ranges
     color_ranges = {
