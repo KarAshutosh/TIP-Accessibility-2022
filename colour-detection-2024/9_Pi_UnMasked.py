@@ -94,20 +94,7 @@ def draw_arrow_down(image_path, vertices, colourPoint, areaPoint):
             [detect_x+areaPoint, detect_y-areaPoint], # bottom_left            
             [detect_x-areaPoint, detect_y-areaPoint], # bottom_right
             ]
-        
-        #######
-        
-        # detection_points = np.array(detection_points_arr, np.int32)
-                
-        # Draw the arrow
-        # cv2.drawContours(image, [detection_points], 0, (0, 0, 255), -1)
 
-        # # Display the image with arrow
-        # cv2.imshow('Arrow Drawn', image)
-        # cv2.waitKey(0)
-        # cv2.destroyAllWindows()
-
-        #######
         return detection_points_arr
     else:
         print("Error: Insufficient vertices to draw arrow.")
@@ -115,9 +102,21 @@ def draw_arrow_down(image_path, vertices, colourPoint, areaPoint):
 def get_color_in_area(image_path, points, visual):
     # Load the image
     image = cv2.imread(image_path)
+    # Centre coordinates of image
+    center_x = image.shape[1] // 2
+    center_y = image.shape[0] // 2
+    # width is the width of the box in pixels at the center of the image
+    width =10 # width default value is 10
+    top_left_x = center_x - width // 2
+    top_left_y = center_y - width // 2
+    bottom_right_x = center_x + width // 2
+    bottom_right_y = center_y + width // 2
 
     # Convert BGR image to HSV
     hsv_unprocessed = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    # Crop the image to the bounding box
+    hsv_cropped = hsv_unprocessed[top_left_y:bottom_right_y, top_left_x:bottom_right_x, :]
+    hsv_average=np.mean(hsv_cropped, axis=(0,1))
     print("Unprocessed hsv:",hsv_unprocessed)
 
     # Define color ranges
@@ -132,23 +131,18 @@ def get_color_in_area(image_path, points, visual):
 
         # Add more color ranges as needed
     }
-
-    detected_colors = []
+    # detected_colors dictionary. can later be exported to JSON   
+    detected_colors = {}
 
     # Check for each color
     for color_name, (lower, upper) in color_ranges.items():
         lower_color = np.array(lower, dtype=np.uint8)
         upper_color = np.array(upper, dtype=np.uint8)
-
-        # Average out hsv for the specified area
-        hsv= np.mean()
-        print("Average HSV :", hsv)
-        
-        # print(str(lower_color) + " and " + str(upper_color))
-
-        # Count non-zero pixels
-        if cv2.countNonZero(color_mask) > 0:
-            detected_colors.append(color_name)
+        # Check if color in range
+        if (np.all(hsv_average<= upper_color)) and (np.all(hsv_average >= lower_color)):
+            detected_colors[color_name] = hsv_average
+        else: # Which value failed?
+            print(hsv_average)
 
     if visual == True:
         detection_points = np.array(points, np.int32)
