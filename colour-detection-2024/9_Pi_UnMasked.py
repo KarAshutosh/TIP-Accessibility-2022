@@ -117,7 +117,7 @@ def get_color_in_area(image_path, points, visual):
     # Crop the image to the bounding box
     hsv_cropped = hsv_unprocessed[top_left_y:bottom_right_y, top_left_x:bottom_right_x, :]
     hsv_average=np.mean(hsv_cropped, axis=(0,1))
-    print("Unprocessed hsv:",hsv_unprocessed)
+    print("Cropped hsv:",hsv_cropped)
 
     # Define color ranges
     color_ranges = {
@@ -142,7 +142,7 @@ def get_color_in_area(image_path, points, visual):
         if (np.all(hsv_average<= upper_color)) and (np.all(hsv_average >= lower_color)):
             detected_colors[color_name] = hsv_average
         else: # Which value failed?
-            print(hsv_average)
+            print("Average hsv: ",hsv_average)
 
     if visual == True:
         detection_points = np.array(points, np.int32)
