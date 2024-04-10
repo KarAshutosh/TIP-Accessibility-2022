@@ -122,7 +122,7 @@ def get_color_in_area(image_path, points, visual):
     # Define color ranges
     color_ranges = {
 
-         'red': [(0, 15, 100), (10, 255, 255)],
+         'red': [(0, 15, 100), (15, 255, 255)],
          'green': [(50, 100, 100), (70, 255, 255)],
          'blue': [(102, 25, 100), (130, 255, 255)],
          'pink' : [(111,11,189),(179,255,255)],
