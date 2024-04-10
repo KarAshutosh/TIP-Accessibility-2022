@@ -7,7 +7,7 @@ import numpy as np
 # s = int(input("Enter S value (0-255): "))
 # v = int(input("Enter V value (0-255): "))
 
-loop= int(input("Enter 1 if I should enter into a loop over h and v. 4 to get values "))
+loop= int(input("Enter 1 if I should enter into a loop over h and v. 4 to get values:  "))
 
 if (loop == 1): # Steps of 5
     for i in range(0,36):
