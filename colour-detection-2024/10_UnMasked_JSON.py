@@ -142,6 +142,7 @@ def get_color_in_area(image_path, points, visual):
         if (np.all(hsv_average<= upper_color)) and (np.all(hsv_average >= lower_color)):
             detected_colors[color_name] = hsv_average
         else: # Which value failed?
+            detected_colors["failed: "] = hsv_average
             print("Average hsv: ",hsv_average)
 
     if visual == True:
