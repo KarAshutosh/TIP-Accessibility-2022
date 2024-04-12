@@ -21,7 +21,8 @@
 - https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf
   - Contains general info about all the camera modules. Relevant sections : v1
 - https://www.raspberrypi.com/documentation/accessories/camera.html
--  
+-  https://docs.rs-online.com/2888/0900766b8127db0a.pdf
+  - This contains the specifications for the camera module currently being used: the v1.3   
 ## Extra links that may be relevant
 - https://libcamera.org/
   - libcamera is the userspace camera stack used by PiCamera2. Note: openCV has not got builtin support for the libcamera stack, which includes the RasPi camera modules, so openCV's Video.Capture(0) will bring up an error.      
