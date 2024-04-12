@@ -22,6 +22,6 @@
   - Contains general info about all the camera modules. Relevant sections : v1   
 ## Extra links that may be relevant
 - https://libcamera.org/
-  - libcamera is the userspace camera stack used by PiCamera 2     
+  - libcamera is the userspace camera stack used by PiCamera2. Note: openCV has not got builtin support for the libcamera stack, which includes the RasPi camera modules, so openCV's Video.Capture(0) will bring up an error.      
 - https://docs.kernel.org/userspace-api/media/v4l/colorspaces-defs.html
   - v4l2 is the kernel driver used to interface with the camera   
