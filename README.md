@@ -13,5 +13,15 @@
 
 # Documentation links 
 ## PiCamera documentation
-## Camera Module datasheet
-## 
+ - IMPORTANT: DO NOT USE PICAMERA IF YOU ARE ON A 64-BIT SYSTEM. USE PICAMERA2 INSTEAD.   
+ - https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/PiCamera2-User-Guide/
+ - https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf
+ - 
+## Camera Module datasheetS
+- https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf
+  - Contains general info about all the camera modules. Relevant sections : v1   
+## Extra links that may be relevant
+- https://libcamera.org/
+  - libcamera is the userspace camera stack used by PiCamera 2     
+- https://docs.kernel.org/userspace-api/media/v4l/colorspaces-defs.html
+  - v4l2 is the kernel driver used to interface with the camera   
