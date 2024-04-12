@@ -1,18 +1,8 @@
-# TIP-Accessibility-2022
-
->## Clone Repo
->```
->git clone https://github.com/KarAshutosh/TIP-Accessibility-2022.git
->```
-
->## Make New Commit
->```
->git add .
->git commit -m "New commit"
->git push origin main
->```
-
->## Pull request
->```
->git pull origin main
->```
+# TODO
+- [ ] Make code work with PiCamera2
+- [ ] Make documentation
+- [ ] Move this repo and TIP-Accessibility-2022 to Organisation
+- [ ] Merge Volume detection code if possible
+- [ ] Test the code with experiments in real time 
+# DONE
+- [ ] 
