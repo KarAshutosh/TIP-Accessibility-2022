@@ -6,4 +6,12 @@
 - [ ] Test the code with experiments in real time
 - [ ] Merge relevant changes upstream to TIP-Accessibility
 # DONE
-- [ ] 
+
+# System information
+- Debian 12 Bookworm
+- RasPi Camera module v1.3
+
+# Documentation links 
+## PiCamera documentation
+## Camera Module datasheet
+## 
