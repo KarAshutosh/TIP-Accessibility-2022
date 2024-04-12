@@ -9,7 +9,7 @@
 
 # System information
 - Debian 12 Bookworm
-- RasPi Camera module v1.3
+- RasPi Camera module v1.3 (OV5647, 5MP, <resolution>)
 
 # Documentation links 
 ## PiCamera documentation
@@ -17,9 +17,11 @@
  - https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/PiCamera2-User-Guide/
  - https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf
  - 
-## Camera Module datasheetS
+## Camera Module datasheets
 - https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf
-  - Contains general info about all the camera modules. Relevant sections : v1   
+  - Contains general info about all the camera modules. Relevant sections : v1
+- https://www.raspberrypi.com/documentation/accessories/camera.html
+-  
 ## Extra links that may be relevant
 - https://libcamera.org/
   - libcamera is the userspace camera stack used by PiCamera2. Note: openCV has not got builtin support for the libcamera stack, which includes the RasPi camera modules, so openCV's Video.Capture(0) will bring up an error.      
