@@ -106,8 +106,6 @@ def get_color_in_area(image_path, points, visual):
          'green': [(50, 100, 100), (70, 255, 255)],
          'blue': [(102, 25, 100), (130, 255, 255)],
          'pink' : [(111,11,189),(179,255,255)],
-        # 'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
-        # 'litmus-Red': [(25, 80, 80), (85, 120, 120)]
 
         # Add more color ranges as needed
     }
@@ -172,9 +170,8 @@ sysOS = "RasPi"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
 areaPoint = 10 
 visual = True
-duration = 1 
+duration = 1 # number of times it runs 
 
 for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
     print(colour)
-    # time.sleep(1)

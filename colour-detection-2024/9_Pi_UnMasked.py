@@ -162,34 +162,7 @@ def get_color_in_area(image_path, points, visual):
 # ====================================================================
 
 def takeImage(sysOS):
-    if sysOS == "Windows":
-        # Open the webcam
-        cap = cv2.VideoCapture(0)
-
-        # Check if the webcam is opened successfully
-        if not cap.isOpened():
-            print("Error: Could not access the webcam.")
-        else:
-            while True:
-                # Capture frame-by-frame
-                ret, frame = cap.read()
-
-                frame = cv2.resize(frame, (640, 480))
-
-                # Display the captured frame
-                cv2.imshow('Webcam', frame)
-
-                # Break the loop when 'q' is pressed
-                if cv2.waitKey(1) & 0xFF == ord('q'): 
-                    # Save the image
-                    cv2.imwrite('test2.jpg', frame)
-                    print('Image saved as test2.jpg')
-                    break
-
-            # Release the webcam and close all OpenCV windows
-            cap.release()
-            cv2.destroyAllWindows()
-    elif sysOS == "RasPi":
+    if sysOS == "RasPi":
         rpiPhoto()
         # os.system("rpicam-still -t 1 -o test2.jpg --vflip --hflip")
         # # rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip
@@ -217,9 +190,9 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
 image_path = 'test2.jpg'
 sysOS = "RasPi"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
-areaPoint = 10
+areaPoint = 10 
 visual = True
-duration = 10 
+duration = 1 
 
 for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
