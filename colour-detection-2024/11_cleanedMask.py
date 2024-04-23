@@ -5,7 +5,6 @@ import numpy as np
 import time
 import subprocess
 
-# # rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip
 
 def rpiPhoto():
     # Define the command
@@ -28,7 +27,6 @@ def rpiPhoto():
         # Terminate the process if Ctrl+C is pressed
         process.terminate()
 
-# sudo apt-get install imagemagick
 
 def detect_and_draw_qr_boundary(image_path):
     # Load the image containing the QR code
@@ -42,26 +40,7 @@ def detect_and_draw_qr_boundary(image_path):
 
     qr_boundary_image = np.copy(image)  # Create a copy to draw the boundary
 
-    # if data:
-    #     print("Decoded Data:", data)
-    #     # Now, we'll decode the QR code using the qrcode library
-    #     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
-    #     qr.add_data(data)
-    #     qr.make(fit=True)
-    #     # Display the position of QR code vertices
-    #     print("QR Code vertices:", vertices)
-        
-    #     # Convert vertices to integers for drawing lines
-    #     vertices = vertices.astype(int)
-        
-    #     # Draw the QR code boundary
-    #     for i in range(len(vertices)):
-    #         # draw bounding box around the QR code
-    #         qr_boundary_image = cv2.line(qr_boundary_image, tuple(vertices[i][0]), tuple(vertices[(i+1) % len(vertices)][0]), color=(255, 0, 0), thickness=2)
-    # else:
-    #     print("QR Code not detected")
-
-    return qr_boundary_image, vertices
+       return qr_boundary_image, vertices
 
 def draw_arrow_down(image_path, vertices, colourPoint, areaPoint):
 
@@ -116,6 +95,7 @@ def get_color_in_area(image_path, points, visual):
     hsv_unprocessed = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     # Crop the image to the bounding box
     hsv_cropped = hsv_unprocessed[top_left_y:bottom_right_y, top_left_x:bottom_right_x, :]
+    # Average out the hsv values
     hsv_average=np.mean(hsv_cropped, axis=(0,1))
     print("Cropped hsv:",hsv_cropped)
 
@@ -126,8 +106,6 @@ def get_color_in_area(image_path, points, visual):
          'green': [(50, 100, 100), (70, 255, 255)],
          'blue': [(102, 25, 100), (130, 255, 255)],
          'pink' : [(111,11,189),(179,255,255)],
-        # 'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
-        # 'litmus-Red': [(25, 80, 80), (85, 120, 120)]
 
         # Add more color ranges as needed
     }
@@ -192,9 +170,8 @@ sysOS = "RasPi"
 distanceFromCenter = 1.2 # 1.2x QR code width from center
 areaPoint = 10 
 visual = True
-duration = 1 
+duration = 1 # number of times it runs 
 
 for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
     print(colour)
-    # time.sleep(1)
