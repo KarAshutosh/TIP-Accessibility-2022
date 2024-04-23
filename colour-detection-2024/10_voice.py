@@ -137,12 +137,12 @@ def get_color_in_area(image_path, points, visual):
     # Define color ranges
     color_ranges = {
 
-        # 'red': [(0, 100, 100), (10, 255, 255)],
-        # 'green': [(50, 100, 100), (70, 255, 255)],
-        # 'blue': [(110, 100, 100), (130, 255, 255)],
-        # 'pink' : [(111,11,189),(179,255,255)],
-        'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
-        'litmus-Red': [(25, 80, 80), (85, 120, 120)]
+         'red': [(0, 15, 100), (15, 255, 255)],
+         'green': [(50, 100, 100), (70, 255, 255)],
+         'blue': [(102, 25, 100), (130, 255, 255)],
+         'pink' : [(111,11,189),(179,255,255)],
+        # 'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
+        # 'litmus-Red': [(25, 80, 80), (85, 120, 120)]
 
         # Add more color ranges as needed
     }
@@ -241,10 +241,24 @@ duration = 10
 def output_data(data):
     if data:
         print(data)
+        for key, value in data.items():
+            if key == "red":
+                mp3_file_path = "./audio/red.mp3"
+                play_mp3(mp3_file_path)
+            if key == "green":
+                mp3_file_path = "./audio/green.mp3"
+                play_mp3(mp3_file_path)
+            if key == "blue":
+                mp3_file_path = "./audio/blue.mp3"
+                play_mp3(mp3_file_path)
+            if key == "pink":
+                mp3_file_path = "./audio/pink.mp3"
+                play_mp3(mp3_file_path)
+            # print(f"{key}: {value}")
     else:
         mp3_file_path = "./audio/none.mp3"
         play_mp3(mp3_file_path)
-        print("Nope")
+        print("None")
 
 for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
