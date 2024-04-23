@@ -5,6 +5,7 @@
 - [ ] Merge Volume detection code if possible
 - [ ] Test the code with experiments in real time
 - [ ] Merge relevant changes upstream to TIP-Accessibility
+- [ ] Implement voice output on the RasPi
 # DONE
 
 # System information
