@@ -33,7 +33,7 @@
   - v4l2 is the kernel driver used to interface with the camera   
 
 ## Notes
-- Error: error: externally-managed-environment
+- Error: `error: externally-managed-environment`
   - When installing a package, use `--break-system-packages` or `venv`
   - Find the source [here](https://stackoverflow.com/questions/75602063/pip-install-r-requirements-txt-is-failing-this-environment-is-externally-mana)
 ## Contact
