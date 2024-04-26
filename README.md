@@ -31,3 +31,9 @@
   - rpicam is an extension of libcamera made by the Raspberry Pi team      
 - https://docs.kernel.org/userspace-api/media/v4l/colorspaces-defs.html
   - v4l2 is the kernel driver used to interface with the camera   
+
+## Contact
+- Ashutosh Karanam
+  - e-mail: f20201441@goa.bits-pilani.ac.in (BITS), ashutoshdeveloping@gmail.com (personal) 
+- Govind Nambiar
+  - e-mail: f20211527@goa.bits-pilani.ac.in
