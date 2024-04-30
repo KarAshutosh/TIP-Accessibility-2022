@@ -11,6 +11,7 @@
 # System information
 - Debian 12 Bookworm
 - RasPi Camera module v1.3 (OV5647, 5MP, <resolution>)
+- Raspberry Pi 3 Model B+
 
 # Documentation links 
 ## PiCamera documentation
