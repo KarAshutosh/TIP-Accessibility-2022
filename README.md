@@ -9,6 +9,7 @@
 # DONE
 
 # System information
+- Raspberry Pi Model 3B+
 - Debian 12 Bookworm
 - RasPi Camera module v1.3 (OV5647, 5MP, <resolution>)
 - Raspberry Pi 3 Model B+
@@ -33,5 +34,15 @@
   - rpicam is an extension of libcamera made by the Raspberry Pi team      
 - https://docs.kernel.org/userspace-api/media/v4l/colorspaces-defs.html
   - v4l2 is the kernel driver used to interface with the camera
+- [SSH into RasPi](https://www.makeuseof.com/how-to-ssh-into-raspberry-pi-remote/)
 
-- [SSH into RasPi](https://www.makeuseof.com/how-to-ssh-into-raspberry-pi-remote/) 
+## Notes
+- Error: `error: externally-managed-environment`
+  - When installing a package, use `--break-system-packages` or `venv`
+  - Find the source [here](https://stackoverflow.com/questions/75602063/pip-install-r-requirements-txt-is-failing-this-environment-is-externally-mana)
+## Contact
+- Ashutosh Karanam
+  - e-mail: f20201441@goa.bits-pilani.ac.in (BITS), ashutoshdeveloping@gmail.com (personal) 
+- Govind Nambiar
+  - e-mail: f20211527@goa.bits-pilani.ac.in
+
