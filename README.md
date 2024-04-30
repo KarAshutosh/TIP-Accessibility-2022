@@ -35,6 +35,7 @@
 - https://docs.kernel.org/userspace-api/media/v4l/colorspaces-defs.html
   - v4l2 is the kernel driver used to interface with the camera
 - [SSH into RasPi](https://www.makeuseof.com/how-to-ssh-into-raspberry-pi-remote/)
+- https://dangitgit.com/
 
 ## Notes
 - Error: `error: externally-managed-environment`
