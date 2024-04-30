@@ -12,8 +12,11 @@
 - Raspberry Pi Model 3B+
 - Debian 12 Bookworm
 - RasPi Camera module v1.3 (OV5647, 5MP, <resolution>)
+- Raspberry Pi 3 Model B+
 
 # Documentation links 
+## RasPi Model 3B+ datasheet
+- https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-product-brief.pdf
 ## PiCamera documentation
  - IMPORTANT: DO NOT USE PICAMERA IF YOU ARE ON A 64-BIT SYSTEM. USE PICAMERA2 INSTEAD.   
  - https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/PiCamera2-User-Guide/
@@ -30,7 +33,8 @@
   - libcamera is the userspace camera stack used by PiCamera2. Note: openCV has not got builtin support for the libcamera stack, which includes the RasPi camera modules, so openCV's Video.Capture(0) will bring up an error.
   - rpicam is an extension of libcamera made by the Raspberry Pi team      
 - https://docs.kernel.org/userspace-api/media/v4l/colorspaces-defs.html
-  - v4l2 is the kernel driver used to interface with the camera   
+  - v4l2 is the kernel driver used to interface with the camera
+- [SSH into RasPi](https://www.makeuseof.com/how-to-ssh-into-raspberry-pi-remote/)
 
 ## Notes
 - Error: `error: externally-managed-environment`
@@ -41,3 +45,4 @@
   - e-mail: f20201441@goa.bits-pilani.ac.in (BITS), ashutoshdeveloping@gmail.com (personal) 
 - Govind Nambiar
   - e-mail: f20211527@goa.bits-pilani.ac.in
+
