@@ -14,6 +14,8 @@
 - Raspberry Pi 3 Model B+
 
 # Documentation links 
+## RasPi Model 3B+ datasheet
+- https://datasheets.raspberrypi.com/rpi3/raspberry-pi-3-b-plus-product-brief.pdf
 ## PiCamera documentation
  - IMPORTANT: DO NOT USE PICAMERA IF YOU ARE ON A 64-BIT SYSTEM. USE PICAMERA2 INSTEAD.   
  - https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/PiCamera2-User-Guide/
