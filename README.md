@@ -12,7 +12,6 @@
 - Raspberry Pi Model 3B+
 - Debian 12 Bookworm
 - RasPi Camera module v1.3 (OV5647, 5MP, <resolution>)
-- Raspberry Pi 3 Model B+
 
 # Documentation links 
 ## RasPi Model 3B+ datasheet
@@ -37,10 +36,17 @@
 - [SSH into RasPi](https://www.makeuseof.com/how-to-ssh-into-raspberry-pi-remote/)
 - https://dangitgit.com/
 
-## Notes
+## Notes/Common Errors
 - Error: `error: externally-managed-environment`
   - When installing a package, use `--break-system-packages` or `venv`
   - Find the source [here](https://stackoverflow.com/questions/75602063/pip-install-r-requirements-txt-is-failing-this-environment-is-externally-mana)
+- Literally any Makefile errors
+  - 90% of Makefile errors are errors of whitespace. (tabs, spaces, trailing spaces, etc)
+  - Make whitespace visible on your code editor
+  - if you are editing your Makefile on GitHub (Highly not recommended):
+  	- Change indent rules to use Tab in the text editor
+   		- 1 Tab = 4 Spaces
+     - Use your code editor instead and push changes from there.
 ## Contact
 - Ashutosh Karanam
   - e-mail: f20201441@goa.bits-pilani.ac.in (BITS), ashutoshdeveloping@gmail.com (personal) 
