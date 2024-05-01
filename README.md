@@ -4,7 +4,7 @@
 - [ ] Move this repo and TIP-Accessibility-2022 to Organisation
 - [ ] Merge Volume detection code if possible
 - [ ] Test the code with experiments in real time
-- [ ] Merge relevant changes upstream to TIP-Accessibility
+- [X] Merge relevant changes upstream to TIP-Accessibility
 - [ ] Implement voice output on the RasPi
 # DONE
 
