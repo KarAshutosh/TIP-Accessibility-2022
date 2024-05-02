@@ -35,6 +35,10 @@
   - v4l2 is the kernel driver used to interface with the camera
 - [SSH into RasPi](https://www.makeuseof.com/how-to-ssh-into-raspberry-pi-remote/)
 - https://dangitgit.com/
+- https://picamera.readthedocs.io/en/release-1.13/fov.html
+	- How the camera hardware works under the hood
+ - https://github.com/opencv/opencv/issues/21653
+ 	- openCV issue for merging libcamera support into OpenCV 	
 
 ## Notes/Common Errors
 - Error: `error: externally-managed-environment`
