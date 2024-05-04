@@ -229,15 +229,6 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
         colour = get_color_in_area(image_path, points, visual)
         return colour
 
-# Example usage:
-image_path = 'test2.jpg'
-# sysOS = "RasPi"
-sysOS = "Windows"
-distanceFromCenter = 1.2 # 1.2x QR code width from center
-areaPoint = 10
-visual = True
-duration = 10 
-
 def output_data(data):
     if data:
         print(data)
@@ -259,6 +250,15 @@ def output_data(data):
         mp3_file_path = "./audio/none.mp3"
         play_mp3(mp3_file_path)
         print("None")
+
+# Example usage:
+image_path = 'test2.jpg'
+# sysOS = "RasPi"
+sysOS = "Windows"
+distanceFromCenter = 1.2 # 1.2x QR code width from center
+areaPoint = 10
+visual = True
+duration = 10 
 
 for i in range(duration):
     colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
