@@ -100,6 +100,7 @@ def draw_arrow_down(image_path, vertices, colourPoint, areaPoint):
         print("Error: Insufficient vertices to draw arrow.")
 
 def get_color_in_area(image_path, points, visual):
+    # This code is doing too many things. detection points could be its own function that defines the box to perform operations on
     # Load the image
     image = cv2.imread(image_path)
     # Centre coordinates of image
@@ -111,7 +112,7 @@ def get_color_in_area(image_path, points, visual):
     top_left_y = center_y - width // 2
     bottom_right_x = center_x + width // 2
     bottom_right_y = center_y + width // 2
-
+    
     # Convert BGR image to HSV
     hsv_unprocessed = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     # Crop the image to the bounding box
