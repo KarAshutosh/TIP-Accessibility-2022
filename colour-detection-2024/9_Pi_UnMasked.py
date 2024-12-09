@@ -5,13 +5,28 @@ import numpy as np
 import time
 import subprocess
 
-# # rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 --vflip --hflip
+
+# Example usage:
+image_path = 'test2.jpg'
+sysOS = "RasPi"
+distanceFromCenter = 1.2 # 1.2x QR code width from center
+areaPoint = 10 # Shows how large the box is : 10 pixel square
+visual = True # Shows the bounding box used for color detection
+duration = 1 # Number of times it takes the photo
+
+for i in range(duration):
+    colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
+    print(colour)
+    # time.sleep(1)
+
+
+# Command executed by rpiPhoto():  rpicam-still --timeout 100000 --width 640 --height 480 --output test2.jpg --timelapse 500 
 
 def rpiPhoto():
-    # Define the command
+    # Define the command: Takes a photo for 10 seconds
     command = [
         "rpicam-still",
-        "--timeout", "10800",
+        "--timeout", "10000",
         "--width", "640",
         "--height", "480",
         "--output", "test2.jpg",
@@ -28,7 +43,8 @@ def rpiPhoto():
         # Terminate the process if Ctrl+C is pressed
         process.terminate()
 
-# sudo apt-get install imagemagick
+## QR CODE code. This code detects the QR png and draws an arrow down to where the detection should take place. This code exists
+## so that if we use an instrument with this QR code it detects color there instead of at the center of the whole image (which is default behaviour)
 
 def detect_and_draw_qr_boundary(image_path):
     # Load the image containing the QR code
@@ -41,25 +57,6 @@ def detect_and_draw_qr_boundary(image_path):
     data, vertices, _ = detector.detectAndDecode(image)
 
     qr_boundary_image = np.copy(image)  # Create a copy to draw the boundary
-
-    # if data:
-    #     print("Decoded Data:", data)
-    #     # Now, we'll decode the QR code using the qrcode library
-    #     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
-    #     qr.add_data(data)
-    #     qr.make(fit=True)
-    #     # Display the position of QR code vertices
-    #     print("QR Code vertices:", vertices)
-        
-    #     # Convert vertices to integers for drawing lines
-    #     vertices = vertices.astype(int)
-        
-    #     # Draw the QR code boundary
-    #     for i in range(len(vertices)):
-    #         # draw bounding box around the QR code
-    #         qr_boundary_image = cv2.line(qr_boundary_image, tuple(vertices[i][0]), tuple(vertices[(i+1) % len(vertices)][0]), color=(255, 0, 0), thickness=2)
-    # else:
-    #     print("QR Code not detected")
 
     return qr_boundary_image, vertices
 
@@ -98,7 +95,7 @@ def draw_arrow_down(image_path, vertices, colourPoint, areaPoint):
         return detection_points_arr
     else:
         print("Error: Insufficient vertices to draw arrow.")
-
+## QR code section ends 
 def get_color_in_area(image_path, points, visual):
     # Load the image
     image = cv2.imread(image_path)
@@ -126,8 +123,6 @@ def get_color_in_area(image_path, points, visual):
          'green': [(50, 100, 100), (70, 255, 255)],
          'blue': [(102, 25, 100), (130, 255, 255)],
          'pink' : [(111,11,189),(179,255,255)],
-        # 'litmus-Blue': [(95, 135, 100), (179, 255, 255)],
-        # 'litmus-Red': [(25, 80, 80), (85, 120, 120)]
 
         # Add more color ranges as needed
     }
@@ -138,12 +133,12 @@ def get_color_in_area(image_path, points, visual):
     for color_name, (lower, upper) in color_ranges.items():
         lower_color = np.array(lower, dtype=np.uint8)
         upper_color = np.array(upper, dtype=np.uint8)
-        # Check if color in range
+        # Check if color in range, add to dict if it is in range
         if (np.all(hsv_average<= upper_color)) and (np.all(hsv_average >= lower_color)):
             detected_colors[color_name] = hsv_average
         else: # Which value failed?
             print("Average hsv: ",hsv_average)
-
+# TODO: Modify this code to make more sense
     if visual == True:
         detection_points = np.array(points, np.int32)
 
@@ -185,16 +180,3 @@ def simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS):
         points = [[316, 279], [336, 279], [336, 259], [316, 259]]
         colour = get_color_in_area(image_path, points, visual)
         return colour
-
-# Example usage:
-image_path = 'test2.jpg'
-sysOS = "RasPi"
-distanceFromCenter = 1.2 # 1.2x QR code width from center
-areaPoint = 10 
-visual = True
-duration = 1 
-
-for i in range(duration):
-    colour = simplified(image_path, distanceFromCenter, areaPoint, visual, sysOS)
-    print(colour)
-    # time.sleep(1)
