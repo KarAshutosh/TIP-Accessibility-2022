@@ -57,6 +57,6 @@
 ## Contact
 - Ashutosh Karanam
   - e-mail: f20201441@goa.bits-pilani.ac.in (BITS), ashutoshdeveloping@gmail.com (personal) 
-- Govind Nambiar
+- Govind S Nambiar
   - e-mail: f20211527@goa.bits-pilani.ac.in
 
